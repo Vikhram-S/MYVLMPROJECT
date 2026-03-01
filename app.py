@@ -302,7 +302,7 @@ with tab5:
         <div class="team-header">
             <div>
                 <div class="team-name">Vikhram S</div>
-                <div class="team-role">Team Lead • Vision–Language Models • Explainable AI • Clinical NLP</div>
+                <div class="team-role">Team Lead • Vision–Language Models • Explainable AI • Natural Language Processing</div>
             </div>
             <a class="team-link" href="https://www.linkedin.com/in/vikhram-s/" target="_blank">
                 <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
@@ -332,7 +332,7 @@ with tab5:
         <div class="team-header">
             <div>
                 <div class="team-name">Dr. Jeffin Gracewell</div>
-                <div class="team-role">Supervisor • Associate Professor • Deep Learning & NLP Research</div>
+                <div class="team-role">Supervisor • Associate Professor,Saveetha Engineering College • Deep Learning & NLP Research</div>
             </div>
             <a class="team-link" href="https://www.linkedin.com/in/jeffin-gracewell-0634007b" target="_blank">
                 <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
@@ -346,10 +346,11 @@ with tab5:
 # =========================
 st.markdown("""
 <div class="footer">
-ExplainableVLM-Rad (2026) — Academic Research Prototype
+ExplainableVLM-Rad (2026) - Vikhram S All rights Reserved &copyright — Academic Research Prototype
 For research demonstration only. Not for clinical use.
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
