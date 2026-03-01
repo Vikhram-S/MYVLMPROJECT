@@ -1,8 +1,6 @@
-streamlit
-pillow
-numpy==1.26.4
-opencv-python
-reportlab
-rouge-score
-
-
+streamlit>=1.30
+pillow>=10.0.0
+numpy>=1.24
+opencv-python-headless>=4.8.0
+reportlab>=4.0.0
+rouge-score>=0.1.2
