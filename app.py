@@ -252,14 +252,7 @@ with tab4:
 with tab5:
     st.markdown('<div class="section-header">Research Team</div>', unsafe_allow_html=True)
 
-   st.markdown("""
-### Vikhram S — Team Lead  
-Vision–Language Models | Explainable AI | Clinical NLP  
-<a href="https://www.linkedin.com/in/vikhram-s/" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" 
-         width="18" style="vertical-align:middle;margin-left:6px;">
-</a>
-""", unsafe_allow_html=True)
+   st.markdown("""### Vikhram S — Team Lead  Vision–Language Models | Explainable AI | Clinical NLP  <a href="https://www.linkedin.com/in/vikhram-s/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="18" style="vertical-align:middle;margin-left:6px;"></a>""", unsafe_allow_html=True)
 
     st.markdown("### Yuvaraj J — Team Member")
     st.markdown("Embedded Systems | Model Deployment")
@@ -276,5 +269,6 @@ ExplainableVLM-Rad (2026) — Academic Research Prototype
 For research demonstration only. Not for clinical use.
 </div>
 """, unsafe_allow_html=True)
+
 
 
