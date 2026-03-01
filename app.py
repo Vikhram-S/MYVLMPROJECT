@@ -346,10 +346,11 @@ with tab5:
 # =========================
 st.markdown("""
 <div class="footer">
-ExplainableVLM-Rad (2026) - Vikhram S All rights Reserved &copyright — Academic Research Prototype
+ExplainableVLM-Rad (2026) - &copy Vikhram S All rights Reserved — Academic Research Prototype
 For research demonstration only. Not for clinical use.
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
