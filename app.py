@@ -252,8 +252,14 @@ with tab4:
 with tab5:
     st.markdown('<div class="section-header">Research Team</div>', unsafe_allow_html=True)
 
-    st.markdown("### Vikhram S — Team Lead")
-    st.markdown("Vision–Language Models | Explainable AI | Clinical NLP")
+   st.markdown("""
+### Vikhram S — Team Lead  
+Vision–Language Models | Explainable AI | Clinical NLP  
+<a href="https://www.linkedin.com/in/vikhram-s/" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" 
+         width="18" style="vertical-align:middle;margin-left:6px;">
+</a>
+""", unsafe_allow_html=True)
 
     st.markdown("### Yuvaraj J — Team Member")
     st.markdown("Embedded Systems | Model Deployment")
@@ -267,8 +273,8 @@ with tab5:
 st.markdown("""
 <div class="footer">
 ExplainableVLM-Rad (2026) — Academic Research Prototype
-Structured report format follows UK radiology reporting conventions.
 For research demonstration only. Not for clinical use.
 </div>
 """, unsafe_allow_html=True)
+
 
