@@ -252,13 +252,94 @@ with tab4:
 with tab5:
     st.markdown('<div class="section-header">Research Team</div>', unsafe_allow_html=True)
 
-    st.markdown("""### Vikhram S — Team Lead  Vision–Language Models | Explainable AI | Clinical NLP  <a href="https://www.linkedin.com/in/vikhram-s/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="18" style="vertical-align:middle;margin-left:6px;"></a>""", unsafe_allow_html=True)
+    st.markdown("""
+    <style>
+    .team-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 18px;
+        margin-bottom: 18px;
+        background-color: #ffffff;
+    }
 
-    st.markdown("### Yuvaraj J — Team Member")
-    st.markdown("Embedded Systems | Model Deployment")
+    .team-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
 
-    st.markdown("### Dr. Jeffin Gracewell — Supervisor")
-    st.markdown("Associate Professor | Deep Learning & NLP Research")
+    .team-name {
+        font-size: 1.15rem;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+
+    .team-role {
+        font-size: 0.95rem;
+        color: #4b5563;
+        margin-bottom: 6px;
+    }
+
+    .team-link img {
+        width: 20px;
+        height: 20px;
+    }
+
+    @media (max-width: 640px) {
+        .team-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+        }
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    # Vikhram
+    st.markdown("""
+    <div class="team-card">
+        <div class="team-header">
+            <div>
+                <div class="team-name">Vikhram S</div>
+                <div class="team-role">Team Lead • Vision–Language Models • Explainable AI • Clinical NLP</div>
+            </div>
+            <a class="team-link" href="https://www.linkedin.com/in/vikhram-s/" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+            </a>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Yuvaraj
+    st.markdown("""
+    <div class="team-card">
+        <div class="team-header">
+            <div>
+                <div class="team-name">Yuvaraj J</div>
+                <div class="team-role">Team Member • Embedded Systems • Model Deployment</div>
+            </div>
+            <a class="team-link" href="https://www.linkedin.com/in/yuvaraj-j06102005/" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+            </a>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Jeffin
+    st.markdown("""
+    <div class="team-card">
+        <div class="team-header">
+            <div>
+                <div class="team-name">Dr. Jeffin Gracewell</div>
+                <div class="team-role">Supervisor • Associate Professor • Deep Learning & NLP Research</div>
+            </div>
+            <a class="team-link" href="https://www.linkedin.com/in/jeffin-gracewell-0634007b" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+            </a>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # =========================
 # FOOTER
@@ -269,6 +350,7 @@ ExplainableVLM-Rad (2026) — Academic Research Prototype
 For research demonstration only. Not for clinical use.
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
