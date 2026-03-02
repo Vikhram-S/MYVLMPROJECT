@@ -316,7 +316,7 @@ with tab5:
     <div class="team-card">
         <div class="team-header">
             <div>
-                <div class="team-name">Dr. Jeffin Gracewell</div>
+                <div class="team-name">Dr. Jeffin Gracewell J</div>
                 <div class="team-role">Supervisor • Associate Professor,Saveetha Engineering College • Deep Learning & NLP Research</div>
             </div>
             <a class="team-link" href="https://www.linkedin.com/in/jeffin-gracewell-0634007b" target="_blank">
@@ -350,6 +350,7 @@ ExplainableVLM-Rad (2026) - &copy Vikhram S All rights Reserved — Academic Res
 For research demonstration only. Not for clinical use.
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
