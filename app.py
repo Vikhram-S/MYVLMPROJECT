@@ -311,21 +311,6 @@ with tab5:
     </div>
     """, unsafe_allow_html=True)
 
-    # Yuvaraj
-    st.markdown("""
-    <div class="team-card">
-        <div class="team-header">
-            <div>
-                <div class="team-name">Yuvaraj J</div>
-                <div class="team-role">Team Member • Embedded Systems • Model Deployment</div>
-            </div>
-            <a class="team-link" href="https://www.linkedin.com/in/yuvaraj-j06102005/" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
-            </a>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
     # Jeffin
     st.markdown("""
     <div class="team-card">
@@ -341,6 +326,21 @@ with tab5:
     </div>
     """, unsafe_allow_html=True)
 
+     # Yuvaraj
+    st.markdown("""
+    <div class="team-card">
+        <div class="team-header">
+            <div>
+                <div class="team-name">Yuvaraj J</div>
+                <div class="team-role">Team Member • Embedded Systems • Model Deployment</div>
+            </div>
+            <a class="team-link" href="https://www.linkedin.com/in/yuvaraj-j06102005/" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+            </a>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
 # =========================
 # FOOTER
 # =========================
@@ -350,6 +350,7 @@ ExplainableVLM-Rad (2026) - &copy Vikhram S All rights Reserved — Academic Res
 For research demonstration only. Not for clinical use.
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
