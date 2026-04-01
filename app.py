@@ -15,25 +15,29 @@ st.set_page_config(
     layout="wide"
 )
 
-# =========================
-# AUTH SYSTEM
-# =========================
 names = ["Vikhram S", "Clinical Researcher"]
 usernames = ["vikhram", "researcher"]
 
 hashed_passwords = [
-    "$2b$12$KIXQW6lP0ZQF1Yl7K3WmEeqvQeJ8s2n3YH2kQ5Jm4QhVvX7F6pK8W",
-    "$2b$12$Lr8hDkF9m9oK2xvTz3E4OeYh9JcF3Pq8N6YlD7TgX5Zc1R2A3B4C"
+    "$2b$12$...",  # paste real hash here
+    "$2b$12$..."
 ]
 
-authenticator = stauth.Authenticate(
-    dict(credentials=dict(usernames={
-        usernames[i]: {"name": names[i], "password": hashed_passwords[i]}
+credentials = {
+    "usernames": {
+        usernames[i]: {
+            "name": names[i],
+            "password": hashed_passwords[i]
+        }
         for i in range(len(usernames))
-    })),
-    cookie_name="expvlm_auth",
-    key="secure_key",
-    cookie_expiry_days=1
+    }
+}
+
+authenticator = stauth.Authenticate(
+    credentials,
+    "expvlm_auth",
+    "secure_key",
+    1
 )
 
 # =========================
