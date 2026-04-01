@@ -16,35 +16,30 @@ st.set_page_config(
 )
 
 # =========================
-# AUTH SETUP (FIXED)
+# AUTH SETUP (NO HASHER BUG)
 # =========================
-names = ["Vikhram S", "Clinical Researcher"]
-usernames = ["vikhram", "researcher"]
-
-# ⚠️ These hashes correspond to:
-# vikhram -> admin123
-# researcher -> research123
-hashed_passwords = stauth.Hasher(["admin123", "research123"]).generate()
-
 credentials = {
     "usernames": {
-        usernames[i]: {
-            "name": names[i],
-            "password": hashed_passwords[i]
+        "vikhram": {
+            "name": "Vikhram S",
+            "password": "admin123"
+        },
+        "researcher": {
+            "name": "Clinical Researcher",
+            "password": "research123"
         }
-        for i in range(len(usernames))
     }
 }
 
 authenticator = stauth.Authenticate(
     credentials,
     "expvlm_cookie",
-    "secure_key_123",
+    "secure_key",
     1
 )
 
 # =========================
-# LOGIN (FIXED API)
+# LOGIN
 # =========================
 name, auth_status, username = authenticator.login()
 
@@ -57,7 +52,7 @@ if auth_status is None:
     st.stop()
 
 # =========================
-# AFTER LOGIN
+# MAIN APP
 # =========================
 if auth_status:
 
@@ -228,7 +223,7 @@ if auth_status:
         c3.metric("Accuracy", "88%")
 
     # =========================
-    # TEAM (PREMIUM)
+    # TEAM (PREMIUM UI)
     # =========================
     with tab5:
         st.markdown('<div class="section-header">Research Team</div>', unsafe_allow_html=True)
@@ -273,6 +268,6 @@ if auth_status:
     # =========================
     st.markdown("""
     <div class="footer">
-    ExplainableVLM-Rad © 2026 | Research Prototype
+    ExplainableVLM-Rad © 2026 | Research Prototype (Not for clinical use)
     </div>
     """, unsafe_allow_html=True)
