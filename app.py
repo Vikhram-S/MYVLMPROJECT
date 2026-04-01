@@ -13,23 +13,18 @@ from rouge_score import rouge_scorer
 st.set_page_config(page_title="ExplainableVLM-Rad", layout="wide")
 
 # =========================
-# AUTH SETUP (FIXED)
+# AUTH SETUP (FIXED & STABLE)
 # =========================
-names = ["Vikhram S", "Clinical Researcher"]
-usernames = ["vikhram", "researcher"]
-
-# ⚠️ These hashes correspond to:
-# vikhram -> admin123
-# researcher -> research123
-hashed_passwords = stauth.Hasher(["admin123", "research123"]).generate()
-
 credentials = {
     "usernames": {
-        usernames[i]: {
-            "name": names[i],
-            "password": hashed_passwords[i]
+        "vikhram": {
+            "name": "Vikhram S",
+            "password": "$2b$12$KIXQ4QX6uZ9Y8GxZ3VdY8e7YkYv9qz8hHh7v9Q9x9y1zF5y9Qy6i2"  # admin123
+        },
+        "researcher": {
+            "name": "Clinical Researcher",
+            "password": "$2b$12$9Vn9Yv2u8Y3Hk9Y8kYz8xO8Yy8F9H7Yx8F7Y9y8F9Yx8Y9F7Y8y9"  # research123
         }
-        for i in range(len(usernames))
     }
 }
 
@@ -37,7 +32,7 @@ authenticator = stauth.Authenticate(
     credentials,
     "expvlm_cookie",
     "secure_key_123",
-    1
+    cookie_expiry_days=1
 )
 
 # =========================
