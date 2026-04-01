@@ -15,18 +15,16 @@ st.set_page_config(page_title="ExplainableVLM-Rad", layout="wide")
 # =========================
 # AUTH SETUP (FIXED & STABLE)
 # =========================
-credentials = {
-    "usernames": {
-        "vikhram": {
-            "name": "Vikhram S",
-            "password": "$2b$12$KIXQ4QX6uZ9Y8GxZ3VdY8e7YkYv9qz8hHh7v9Q9x9y1zF5y9Qy6i2"  # admin123
-        },
-        "researcher": {
-            "name": "Clinical Researcher",
-            "password": "$2b$12$9Vn9Yv2u8Y3Hk9Y8kYz8xO8Yy8F9H7Yx8F7Y9y8F9Yx8Y9F7Y8y9"  # research123
-        }
-    }
-}
+username = st.text_input("Username")
+password = st.text_input("Password", type="password")
+
+if st.button("Login"):
+    if username == "vikhram" and password == "admin123":
+        st.success("Logged in as Vikhram")
+    elif username == "researcher" and password == "research123":
+        st.success("Logged in as Researcher")
+    else:
+        st.error("Invalid credentials")
 
 authenticator = stauth.Authenticate(
     credentials,
