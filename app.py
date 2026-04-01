@@ -56,7 +56,7 @@ if auth_status is None:
     st.stop()
 
 if auth_status:
-    authenticator.logout("Logout", location="sidebar")
+    authenticator.logout("Logout", location="sidebar", key="logout_button")
     st.sidebar.success(f"Logged in as {name}")
 
 # =========================
