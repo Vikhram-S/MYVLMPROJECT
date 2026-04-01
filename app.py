@@ -30,8 +30,6 @@ if not st.session_state.logged_in:
     st.title("🔐 ExplainableVLM-Rad Login")
     st.caption("Clinical Research Access Portal")
 
-    st.info("Demo Credentials:\nvikhram / admin123\nresearcher / research123")
-
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
 
