@@ -15,13 +15,16 @@ st.set_page_config(
     layout="wide"
 )
 
+# =========================
+# AUTH SETUP (FIXED)
+# =========================
 names = ["Vikhram S", "Clinical Researcher"]
 usernames = ["vikhram", "researcher"]
 
-hashed_passwords = [
-    "$2b$12$...",  # paste real hash here
-    "$2b$12$..."
-]
+# ⚠️ These hashes correspond to:
+# vikhram -> admin123
+# researcher -> research123
+hashed_passwords = stauth.Hasher(["admin123", "research123"]).generate()
 
 credentials = {
     "usernames": {
@@ -35,105 +38,108 @@ credentials = {
 
 authenticator = stauth.Authenticate(
     credentials,
-    "expvlm_auth",
-    "secure_key",
+    "expvlm_cookie",
+    "secure_key_123",
     1
 )
 
 # =========================
-# UI STYLE
+# LOGIN (FIXED API)
 # =========================
-st.markdown("""
-<style>
-html, body {
-    font-family: "Times New Roman", serif;
-    background: linear-gradient(to right, #f8fafc, #eef2ff);
-}
-
-.section-header {
-    font-size: 20px;
-    font-weight: 600;
-    border-bottom: 1px solid #e5e7eb;
-    margin-top: 25px;
-    margin-bottom: 15px;
-}
-
-.team-card {
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 18px;
-    background-color: #ffffff;
-    transition: all 0.25s ease;
-}
-
-.team-card:hover {
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    transform: translateY(-3px);
-}
-
-.team-container {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.team-img {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-}
-
-.team-name {
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.team-role {
-    font-size: 0.9rem;
-    color: #4b5563;
-}
-
-.team-badge {
-    font-size: 11px;
-    padding: 3px 8px;
-    border-radius: 6px;
-    background-color: #eef2ff;
-    color: #3730a3;
-    margin-right: 6px;
-}
-
-.footer {
-    margin-top: 40px;
-    border-top: 1px solid #e5e7eb;
-    padding-top: 10px;
-    font-size: 12px;
-    color: gray;
-}
-</style>
-""", unsafe_allow_html=True)
-
-# =========================
-# LOGIN
-# =========================
-name, auth_status, username = authenticator.login("🔐 Login", "main")
+name, auth_status, username = authenticator.login()
 
 if auth_status is False:
-    st.error("Invalid credentials")
+    st.error("Invalid username or password")
 
 if auth_status is None:
-    st.title("ExplainableVLM-Rad")
+    st.title("🔐 ExplainableVLM-Rad")
     st.caption("Clinical Research Access Portal")
     st.stop()
 
 # =========================
-# MAIN APP
+# AFTER LOGIN
 # =========================
 if auth_status:
 
-    authenticator.logout("Logout", "sidebar")
+    authenticator.logout("Logout", location="sidebar")
     st.sidebar.success(f"Logged in as {name}")
 
+    # =========================
+    # UI STYLE
+    # =========================
+    st.markdown("""
+    <style>
+    html, body {
+        font-family: "Times New Roman", serif;
+        background: linear-gradient(to right, #f8fafc, #eef2ff);
+    }
+
+    .section-header {
+        font-size: 20px;
+        font-weight: 600;
+        border-bottom: 1px solid #e5e7eb;
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+
+    .team-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 18px;
+        background-color: #ffffff;
+        transition: 0.25s;
+    }
+
+    .team-card:hover {
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        transform: translateY(-3px);
+    }
+
+    .team-container {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .team-img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+    }
+
+    .team-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .team-role {
+        font-size: 0.9rem;
+        color: #4b5563;
+    }
+
+    .team-badge {
+        font-size: 11px;
+        padding: 3px 8px;
+        border-radius: 6px;
+        background-color: #eef2ff;
+        color: #3730a3;
+        margin-right: 6px;
+    }
+
+    .footer {
+        margin-top: 40px;
+        border-top: 1px solid #e5e7eb;
+        padding-top: 10px;
+        font-size: 12px;
+        color: gray;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    # =========================
+    # HEADER
+    # =========================
     st.title("Explainable Vision–Language Model for Radiology Report Synthesis")
     st.markdown("---")
 
@@ -141,17 +147,23 @@ if auth_status:
         "Abstract", "Architecture", "Inference", "Evaluation", "Team"
     ])
 
+    # =========================
     # ABSTRACT
+    # =========================
     with tab1:
         st.markdown('<div class="section-header">Abstract</div>', unsafe_allow_html=True)
         st.write("Multimodal AI system for radiology report generation with explainability.")
 
+    # =========================
     # ARCHITECTURE
+    # =========================
     with tab2:
         st.markdown('<div class="section-header">Architecture</div>', unsafe_allow_html=True)
-        st.write("- ViT Encoder\n- Cross Attention\n- Transformer Decoder")
+        st.write("- Vision Transformer\n- Cross Attention\n- Transformer Decoder")
 
+    # =========================
     # INFERENCE
+    # =========================
     with tab3:
 
         st.markdown('<div class="section-header">Upload Radiograph</div>', unsafe_allow_html=True)
@@ -162,7 +174,7 @@ if auth_status:
             img_np = np.array(img.resize((256,256)))
 
             col1, col2 = st.columns(2)
-            col1.image(img, caption="Input")
+            col1.image(img, caption="Input Radiograph")
 
             hm = np.zeros((256,256))
             cv2.circle(hm,(140,150),75,1,-1)
@@ -170,14 +182,14 @@ if auth_status:
             heatmap = cv2.applyColorMap((hm*255).astype("uint8"), cv2.COLORMAP_JET)
             overlay = cv2.addWeighted(img_np,0.65,heatmap,0.35,0)
 
-            col2.image(overlay, caption="Attention")
+            col2.image(overlay, caption="Model Attention")
 
             real = "Right lower lobe pneumonia."
             gen = "Early right lower lobe infection."
 
             c1,c2 = st.columns(2)
-            c1.text_area("Radiologist", real)
-            c2.text_area("AI", gen)
+            c1.text_area("Radiologist Report", real)
+            c2.text_area("AI Generated Report", gen)
 
             scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
             score = scorer.score(real,gen)['rougeL'].fmeasure
@@ -197,7 +209,7 @@ if auth_status:
 
                 story.append(Paragraph("ExplainableVLM Report", styles["Title"]))
                 story.append(Spacer(1,12))
-                story.append(Paragraph(f"ROUGE: {score}", styles["Normal"]))
+                story.append(Paragraph(f"ROUGE Score: {score}", styles["Normal"]))
                 story.append(RLImage("xray.jpg",300,200))
                 story.append(RLImage("heat.jpg",300,200))
 
@@ -206,14 +218,18 @@ if auth_status:
                 with open("report.pdf","rb") as f:
                     st.download_button("Download PDF", f, "report.pdf")
 
+    # =========================
     # EVALUATION
+    # =========================
     with tab4:
         c1,c2,c3 = st.columns(3)
         c1.metric("BLEU", "0.62")
         c2.metric("ROUGE", "0.74")
         c3.metric("Accuracy", "88%")
 
-    # TEAM (UPGRADED)
+    # =========================
+    # TEAM (PREMIUM)
+    # =========================
     with tab5:
         st.markdown('<div class="section-header">Research Team</div>', unsafe_allow_html=True)
 
@@ -223,7 +239,7 @@ if auth_status:
                 <img class="team-img" src="https://i.pravatar.cc/150?img=12">
                 <div>
                     <div class="team-name">Vikhram S</div>
-                    <div class="team-role">Lead • VLM • Explainable AI</div>
+                    <div class="team-role">Lead • Vision–Language Models • Explainable AI</div>
                     <span class="team-badge">Lead</span>
                 </div>
             </div>
@@ -234,7 +250,7 @@ if auth_status:
                 <img class="team-img" src="https://i.pravatar.cc/150?img=5">
                 <div>
                     <div class="team-name">Dr. Jeffin Gracewell J</div>
-                    <div class="team-role">Supervisor • Deep Learning</div>
+                    <div class="team-role">Supervisor • Deep Learning & NLP</div>
                     <span class="team-badge">Advisor</span>
                 </div>
             </div>
@@ -253,11 +269,10 @@ if auth_status:
         """, unsafe_allow_html=True)
 
     # =========================
-# FOOTER
-# =========================
-st.markdown("""
-<div class="footer">
-ExplainableVLM-Rad (2026) - &copy Vikhram S All rights Reserved — Academic Research Prototype
-For research demonstration only. Not for clinical use.
-</div>
-""", unsafe_allow_html=True)
+    # FOOTER
+    # =========================
+    st.markdown("""
+    <div class="footer">
+    ExplainableVLM-Rad © 2026 | Research Prototype
+    </div>
+    """, unsafe_allow_html=True)
