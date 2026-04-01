@@ -1,5 +1,4 @@
 import streamlit as st
-import streamlit_authenticator as stauth
 from PIL import Image
 import numpy as np
 import cv2
@@ -13,55 +12,53 @@ from rouge_score import rouge_scorer
 st.set_page_config(page_title="ExplainableVLM-Rad", layout="wide")
 
 # =========================
-# AUTH SETUP (FIXED & STABLE)
+# SESSION LOGIN STATE
 # =========================
-username = st.text_input("Username")
-password = st.text_input("Password", type="password")
-
-if st.button("Login"):
-    if username == "vikhram" and password == "admin123":
-        st.success("Logged in as Vikhram")
-    elif username == "researcher" and password == "research123":
-        st.success("Logged in as Researcher")
-    else:
-        st.error("Invalid credentials")
-
-authenticator = stauth.Authenticate(
-    credentials,
-    "expvlm_cookie",
-    "secure_key_123",
-    cookie_expiry_days=1
-)
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
+    st.session_state.user = None
 
 # =========================
-# LOGIN UI (NO VALUE ERROR)
+# LOGIN UI
 # =========================
-authenticator.login()
+if not st.session_state.logged_in:
 
-auth_status = st.session_state.get("authentication_status")
-name = st.session_state.get("name")
-
-# =========================
-# AUTH STATES
-# =========================
-if auth_status is False:
-    st.error("❌ Invalid Username or Password")
-    st.stop()
-
-if auth_status is None:
-    st.title("🔐 ExplainableVLM-Rad")
+    st.title("🔐 ExplainableVLM-Rad Login")
     st.caption("Clinical Research Access Portal")
-    st.info("Please login to continue")
+
+    st.info("Demo Credentials:\nvikhram / admin123\nresearcher / research123")
+
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+
+    if st.button("Login", key="login_btn"):
+        if username == "vikhram" and password == "admin123":
+            st.session_state.logged_in = True
+            st.session_state.user = "Vikhram S"
+            st.rerun()
+
+        elif username == "researcher" and password == "research123":
+            st.session_state.logged_in = True
+            st.session_state.user = "Clinical Researcher"
+            st.rerun()
+
+        else:
+            st.error("❌ Invalid credentials")
+
     st.stop()
 
 # =========================
-# LOGOUT (NO DUPLICATE KEY)
+# LOGOUT
 # =========================
-authenticator.logout("Logout", "sidebar", key="logout_btn")
-st.sidebar.success(f"Logged in as {name}")
+st.sidebar.success(f"Logged in as {st.session_state.user}")
+
+if st.sidebar.button("Logout", key="logout_btn"):
+    st.session_state.logged_in = False
+    st.session_state.user = None
+    st.rerun()
 
 # =========================
-# CLEAN PROFESSIONAL CSS
+# CLEAN CSS
 # =========================
 st.markdown("""
 <style>
@@ -97,10 +94,10 @@ with tab1:
 # =========================
 with tab2:
     st.markdown("""
-- Vision Transformer
-- Cross Attention
-- Clinical Decoder
-- Explainability Module
+- Vision Transformer  
+- Cross Attention  
+- Clinical Decoder  
+- Explainability Module  
 """)
 
 # =========================
@@ -137,7 +134,7 @@ with tab3:
         st.metric("ROUGE-L", round(rouge,3))
 
 # =========================
-# EVAL
+# EVALUATION
 # =========================
 with tab4:
     st.metric("Accuracy","88%")
