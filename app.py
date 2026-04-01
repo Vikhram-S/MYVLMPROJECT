@@ -12,18 +12,15 @@ from rouge_score import rouge_scorer
 # =========================
 st.set_page_config(page_title="ExplainableVLM-Rad", layout="wide")
 
-# =========================
-# LOGIN CONFIG (NO HASH ERRORS)
-# =========================
 credentials = {
-    "usernames":"admin", {
+    "usernames": {
         "admin": {
             "name": "Administrator",
-            "password": "$2b$12$KIXQ4QX6uZ9Y8GxZ3VdY8e7YkYv9qz8hHh7v9Q9x9y1zF5y9Qy6i2"  # admin123
+            "password": "$2b$12$KIXQ4QX6uZ9Y8GxZ3VdY8e7YkYv9qz8hHh7v9Q9x9y1zF5y9Qy6i2"
         },
         "researcher": {
             "name": "Research User",
-            "password": "$2b$12$9Vn9Yv2u8Y3Hk9Y8kYz8xO8Yy8F9H7Yx8F7Y9y8F9Yx8Y9F7Y8y9"  # research123
+            "password": "$2b$12$9Vn9Yv2u8Y3Hk9Y8kYz8xO8Yy8F9H7Yx8F7Y9y8F9Yx8Y9F7Y8y9"
         }
     }
 }
