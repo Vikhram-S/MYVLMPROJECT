@@ -173,7 +173,7 @@ Recommend clinical correlation.
             st.text_area("", real_report, height=300)
 
         with col2:
-            st.markdown("### 🤖 AI Generated Report")
+            st.markdown("### 🤖 ExpVLM-Rad Generated Report")
             st.text_area("", generated_report, height=300)
 
         # =========================
