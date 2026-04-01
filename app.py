@@ -39,9 +39,13 @@ authenticator = stauth.Authenticate(
 )
 
 # =========================
-# LOGIN
+# LOGIN (FINAL FIX)
 # =========================
-name, auth_status, username = authenticator.login()
+authenticator.login()
+
+auth_status = st.session_state.get("authentication_status")
+name = st.session_state.get("name")
+username = st.session_state.get("username")
 
 if auth_status is False:
     st.error("Invalid username or password")
@@ -50,6 +54,10 @@ if auth_status is None:
     st.title("🔐 ExplainableVLM-Rad")
     st.caption("Clinical Research Access Portal")
     st.stop()
+
+if auth_status:
+    authenticator.logout("Logout", location="sidebar")
+    st.sidebar.success(f"Logged in as {name}")
 
 # =========================
 # MAIN APP
