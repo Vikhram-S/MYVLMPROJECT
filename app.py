@@ -15,6 +15,14 @@ st.set_page_config(
     layout="wide"
 )
 # =========================
+# SESSION STATE INIT (CRITICAL FIX)
+# =========================
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
+
+if "user" not in st.session_state:
+    st.session_state.user = None
+# =========================
 # LOGIN UI
 # =========================
 if not st.session_state.logged_in:
